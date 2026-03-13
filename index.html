@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V říši divů za displejem</title>
+  <meta name="description" content="Interaktivní hra inspirovaná Alenkou v říši divů — objev svou vlastní říši divů za displejem." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Particle background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ══════ TOP BAR (shown after character selection) ══════ -->
+  <div id="top-bar" class="top-bar hidden">
+    <div class="top-bar-character" onclick="toggleProfile()">
+      <span class="top-bar-avatar" id="top-bar-avatar"></span>
+      <span class="top-bar-name" id="top-bar-name"></span>
+    </div>
+    <div class="top-bar-score">
+      <span>Body pozornosti:</span>
+      <span id="score-display">0</span>
+    </div>
+  </div>
+
+  <!-- ══════ CHARACTER PROFILE SIDEBAR ══════ -->
+  <div id="profile-sidebar" class="profile-sidebar" onclick="toggleProfile()">
+    <div class="profile-card" onclick="event.stopPropagation()">
+      <div class="profile-avatar" id="profile-avatar"></div>
+      <h3 id="profile-name"></h3>
+      <p class="profile-desc" id="profile-bio"></p>
+      <p class="profile-interests-label" id="profile-interests"></p>
+      <button class="btn" onclick="toggleProfile()"><span>Zavřít</span></button>
+    </div>
+  </div>
+
+  <!-- ══════ START SCREEN ══════ -->
+  <div id="start" class="screen active">
+    <h1 class="start-title">V říši divů<br>za displejem</h1>
+    <p class="start-subtitle">Interaktivní příběh inspirovaný Alenkou</p>
+    <div class="btn-group">
+      <button class="btn primary" id="btn-start" onclick="startIntro()">
+        <span>Začít hru</span>
+      </button>
+      <button class="btn" id="btn-about" onclick="openAbout()">
+        <span>O hře</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════ INTRO SCREEN ══════ -->
+  <div id="intro" class="screen">
+    <div class="intro-text-container" id="intro-content">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- ══════ CHARACTER SELECT SCREEN ══════ -->
+  <div id="character-select" class="screen">
+    <h2 class="char-screen-title">Vyber si postavu, se kterou chceš spadnout do králičí nory.</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn" id="carousel-prev" onclick="scrollCarousel(-1)">‹</button>
+      <div class="carousel-track" id="carousel-track">
+        <!-- filled by JS -->
+      </div>
+      <button class="carousel-btn" id="carousel-next" onclick="scrollCarousel(1)">›</button>
+    </div>
+  </div>
+
+  <!-- ══════ LEVEL 1 INTRO ══════ -->
+  <div id="level1-intro" class="screen">
+    <div class="dialog-container" id="level1-intro-content">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- ══════ LEVEL 1 GAMEPLAY ══════ -->
+  <div id="level1-game" class="screen">
+    <div class="game-header">
+      <h2 class="game-title">Vyber příspěvek</h2>
+      <p class="game-round" id="round-indicator"></p>
+    </div>
+    <div class="posts-container" id="posts-container">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- ══════ FEEDBACK SCREEN ══════ -->
+  <div id="feedback" class="screen">
+    <div class="feedback-content" id="feedback-content">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- ══════ LEVEL 1 RESULTS ══════ -->
+  <div id="level1-results" class="screen">
+    <div class="results-container" id="results-content">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- ══════ ABOUT MODAL ══════ -->
+  <div id="about-modal" class="modal-overlay" onclick="closeAbout()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <h2>O hře</h2>
+      <p>
+        „V říši divů za displejem" je interaktivní příběh inspirovaný Alenkou v říši divů.
+        Vyber si postavu a objev svou vlastní říši divů
+        — tentokrát za displejem telefonu. Tvé rozhodnutí ovlivní, jak se příběh bude vyvíjet.
+      </p>
+      <button class="btn primary" id="btn-close-about" onclick="closeAbout()">
+        <span>Zavřít</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
